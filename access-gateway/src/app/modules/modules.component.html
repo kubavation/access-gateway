@@ -1,0 +1,6 @@
+<div *ngFor="let module of modules$ | async">
+  <div>
+    <p>{{module.name}}</p>
+    <button (click)="redirectTo(module)">Open</button>
+  </div>
+</div>
