@@ -1,3 +1,11 @@
+
+<div style="margin: 2vw">
+  <mat-form-field>
+    <mat-label>Search...</mat-label>
+    <input [formControl]="searchInput" matInput (keyup)="search($event)" placeholder="Search..." #input>
+  </mat-form-field>
+</div>
+
 <div class="modules-container">
 <div *ngFor="let module of modules$ | async" class="mat-card-container">
     <mat-card>
