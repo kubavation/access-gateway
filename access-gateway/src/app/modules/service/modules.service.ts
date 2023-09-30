@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Subsystem} from "../model/subsystem";
 import {environment} from "../../../environments/environment";
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
+import {SubsystemConfig} from "../model/subsystem-config";
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,8 @@ export class ModulesService {
   constructor(private http: HttpClient) {
   }
 
-  //mock
-  public moduleConfig(module: string): Observable<string> {
-    return of("http://localhost:4200");
+  public moduleConfig(module: string): Observable<SubsystemConfig> {
+    return this.http.get<SubsystemConfig>(`${environment.modulesUrl}/modules/${module}/config`)
   }
 
 }

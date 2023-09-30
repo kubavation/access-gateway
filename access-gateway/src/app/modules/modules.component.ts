@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ModulesService} from "./service/modules.service";
 import {Subsystem} from "./model/subsystem";
+import {switchMap} from "rxjs";
 
 @Component({
   selector: 'app-modules',
@@ -16,6 +17,6 @@ export class ModulesComponent {
 
   redirectTo(module: Subsystem) {
     this.modulesService.moduleConfig(module.shortcut)
-      .subscribe(config => window.location.href = config)
+      .subscribe(({url}) => window.location.href = url)
   }
 }
